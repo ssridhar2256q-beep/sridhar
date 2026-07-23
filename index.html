@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Birthday Love Surprise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+
+    <main class="app">
+      <section class="stage is-active" id="stage-intro" aria-labelledby="intro-title">
+        <img class="intro-bg" src="lover-bg.jpeg" alt="" aria-hidden="true" />
+        <div class="sparkles" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="gift-box">
+            <div class="gift-lid"></div>
+            <div class="gift-ribbon"></div>
+            <div class="gift-body"></div>
+          </div>
+        </div>
+        <p class="eyebrow">Chellameyyy 🍒💋</p>
+        <p class="lead">
+          Myluuuhhhh...🦚kku Inaiku special day, atha konjam special-a celebrate panna
+          indha surprise.Ithu unakku pudikkum nu nenaikkuren chlm...
+        </p>
+        <button class="primary-action" type="button" data-next="stage-wish">
+          Open Surprise
+        </button>
+      </section>
+
+      <section class="stage wish-stage" id="stage-wish" aria-label="Birthday wish">
+        <div class="wish-photo-wrap">
+          <img class="wish-photo" src="IMG_20260720_221357_066.jpg" alt="Birthday girl" />
+          <div class="cake mini-cake" aria-hidden="true">
+            <div class="flame"></div>
+            <div class="candle"></div>
+            <div class="icing"></div>
+            <div class="cake-top"></div>
+            <div class="cake-base"></div>
+          </div>
+        </div>
+        <p class="eyebrow">Happy birthday Myluuuhhhh...🍒🫂🦚</p>
+        <p class="message">
+          Unna apa irunthu romba pudikum chlm namma tha miss pannittom chlm...🥹Nee ipa en life la vanthathula 
+          special tha chlm...😍Innaikku en Myluuuhhhh kku bdy so nee ipa irukka mari eppayum happy a irukkanum chlm...😇
+        </p>
+        <button class="primary-action" type="button" data-next="stage-photo">
+          Make a Wish
+        </button>
+      </section>
+
+      <section class="stage photo-stage" id="stage-photo" aria-labelledby="photo-title">
+        <div class="memory-hearts" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="eyebrow">A memory for your birthday</p>
+        <h2 id="photo-title">Alagi...😍</h2>
+        <div class="memory-card">
+          <div class="photo-frame">
+            <img id="love-photo" src="IMG_20260720_224706_283.jpg" alt="Birthday memory" />
+          </div>
+          <div class="memory-caption">
+            <span>Beautiful Bdy Girl</span>
+            <small>Nee siricha alaga iruppa chlm rombave athunaala eppayum sirichu sandhosam a iru Chellameyyy...☺️ </small>
+          </div>
+        </div>
+        <button class="primary-action" type="button" data-next="stage-game">
+          Start Love Game
+        </button>
+      </section>
+    
+      <section class="stage game-stage" id="stage-game" aria-labelledby="game-title">
+        <p class="eyebrow">Birthday love game</p>
+        <h2 id="game-title">Catch 5 hearts</h2>
+        <p class="message compact">Un birthday-ku 5 love hearts collect pannu chlm. Apram final wish unlock aagum.</p>
+        <div class="score-row">
+          <span>Score</span>
+          <strong><span id="score">0</span>/5</strong>
+        </div>
+        <p class="catch-message" id="catch-message" aria-live="polite">
+          First heart-a catch pannu chlm... 💖
+        </p>
+        <div class="heart-arena" id="heart-arena" aria-label="Love heart game"></div>
+        <button class="primary-action hidden" type="button" id="unlock-final" data-next="stage-reasons">
+          Unlock Final Surprise
+        </button>
+      </section>
+      <section class="stage wishes-stage" id="stage-reasons" aria-label="Birthday wishes">
+        <div class="reason-grid">
+          <article>
+            <img class="reason-photo" src="lover-bg.jpeg" alt="Birthday memory" />
+            <span>01</span>
+            <h3>Always keep smiling</h3>
+            <p>Un smile eppovum ipdiye irukkanum chlm atha na pakkanum di...😉</p>
+          </article>
+          <article>
+            <img class="reason-photo" src="IMG_20260720_221357_066.jpg" alt="Birthday memory" />
+            <span>02</span>
+            <h3>Dreams ellam true aaganum</h3>
+            <p>Ne nenachathula onnu onna nadakkum chlm...👍</p>
+          </article>
+          <article>
+            <img class="reason-photo" src="IMG_20260720_224706_283.jpg" alt="Birthday memory" />
+            <span>03</span>
+            <h3>Love and peace kidaikanum</h3>
+            <p>Indha bdy la irunthu unakku pudicha mari un life maarum...🫴</p>
+          </article>
+        </div>
+        <button class="primary-action" type="button" data-next="stage-final">
+          Final Surprise
+        </button>
+      </section>
+
+      <section class="stage final-stage" id="stage-final" aria-labelledby="final-title">
+        <div class="balloons" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      
+        <h2 id="final-title">Happy B-Day <span data-friend-name>Thangameyyy...🍒🫂🦚</span>!</h2>
+        <p class="message">
+          Happy Birthday di chlm. Nee en life-la romba special. Iniku mattum illa,Eppayum nee
+          happy-a irukkanum laddu...😇😍💋luv yeww di en myluuuhhh kutty...🎀🤌🏻💋
+        </p>
+        <div class="actions">
+          <a class="whatsapp-action" id="thank-whatsapp" href="#" target="_blank" rel="noreferrer">
+            Say Thank You
+          </a>
+          <button class="secondary-action" type="button" id="replay">Replay</button>
+          <button class="primary-action" type="button" id="celebrate">More Confetti</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
