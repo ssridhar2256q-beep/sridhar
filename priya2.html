@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Anand!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .screen {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            animation: fadeIn 0.5s ease-in-out forwards;
+            position: relative;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #screen2 {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+                url("slide2-background.png");
+            background-position: center;
+            background-size: cover;
+            background-color: transparent;
+            backdrop-filter: none;
+        }
+
+        #screen5 {
+            gap: 4px;
+            max-height: calc(100vh - 24px);
+            overflow-y: auto;
+            background-image: url("anand-photo.jpe");
+            background-position: center 25%;
+            background-size: cover;
+            background-color: transparent;
+            backdrop-filter: none;
+        }
+
+        #screen5 p {
+            margin-bottom: 8px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Titles & Fonts */
+        h1, .cursive {
+            font-family: 'Great Vibes', cursive;
+            color: #d63384;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        p {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            background: #d63384;
+            color: white;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #b8236c;
+        }
+
+        /* 1. Countdown Screen */
+        #timer {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #4a00e0;
+            letter-spacing: 2px;
+            margin: 20px 0;
+        }
+
+        /* 2. Love Proposal Screen */
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            position: relative;
+            width: 100%;
+            justify-content: center;
+            height: 60px;
+        }
+
+        #noBtn {
+            position: absolute;
+            background: #6c757d;
+            box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
+        }
+
+        /* 3. Butterfly Catching Screen */
+        #game-container {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            border: 2px dashed rgba(214, 51, 132, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .butterfly-emoji {
+            font-size: 2rem;
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.1s linear;
+            z-index: 10;
+        }
+
+        .jar-container {
+            position: relative;
+            width: 80px;
+            height: 110px;
+            margin-top: 10px;
+        }
+
+        .jar {
+            font-size: 4.5rem;
+            line-height: 1;
+        }
+
+        .jar-count {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            font-weight: bold;
+            color: #d63384;
+            font-size: 1.2rem;
+        }
+
+        .message-box {
+            min-height: 50px;
+            font-style: italic;
+            color: #6a11cb;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .typing-cursor::after {
+            content: "|";
+            animation: blink 0.7s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            to { visibility: hidden; }
+        }
+
+        /* 4. Gift Box Screen */
+        .gift-box {
+            font-size: 6rem;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .heart-rain {
+            position: fixed;
+            top: -60px;
+            z-index: 999;
+            pointer-events: none;
+            line-height: 1;
+            animation: heart-fall linear forwards;
+        }
+
+        @keyframes heart-fall {
+            to {
+                transform: translateY(115vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="screen1" class="screen active">
+        <p>Wait... something magical happens at 12:00 AM 🌙</p>
+        <div id="timer">11:59:55</div>
+        <p style="font-size: 0.9rem; color: #777;">JUST A FEW SECONDS...</p>
+    </div>
+
+    <div id="screen2" class="screen">
+        <h1 class="cursive">Thangameeeyyy</h1>
+        <p>Do you love me? 🥺👉👈</p>
+        <div class="btn-container">
+            <button id="yesBtn" class="btn" onclick="nextScreen(3)">Yes 💖</button>
+            <button id="noBtn" class="btn">No 💔</button>
+        </div>
+    </div>
+
+    <div id="screen3" class="screen">
+        <h2 id="game-title" style="color: #b8236c; margin-bottom: 10px;"></h2>
+        <p id="game-instruction" style="font-size: 0.9rem;"></p>
+        
+        <div class="message-box" id="gameMessage">Catch a butterfly to read the note!</div>  
+
+        <div id="game-container"></div>
+
+        <div class="jar-container">
+            <div class="jar">🫙</div>
+            <div class="jar-count" id="countLabel">0/5</div>
+        </div>
+    </div>
+
+    <div id="screen4" class="screen">
+        <p>They left a gift jar for you 🎁</p>
+        <div class="gift-box" onclick="openGift()">💝</div>
+        <p style="font-size: 0.9rem; color: #666;">Tap to open ✨</p>
+    </div>
+
+    <div id="screen5" class="screen">
+        <div style="font-size: 3rem;">🎂❤️✨</div>
+        <h1 class="cursive" style="font-size: clamp(2.4rem, 11vw, 4rem); margin: 4px 0 8px;">Happy Birthday Anand</h1>
+        <p style="font-weight: 500; color: #4a4a4a;">"You mean more than words can say... and I'm really lucky to have you in my life" 🥰</p>
+        
+        <hr style="border: 0; height: 1px; background: rgba(0,0,0,0.1); width: 100%; margin: 15px 0;">
+        
+        <p style="font-weight: 600; color: #d63384;">So... can we go out tonight? ✨🌙</p>
+        <p style="font-size: 0.8rem; margin-top: -15px; color: #888;">Just you, me & the stars</p>
+        
+        <div class="btn-container">
+            <button class="btn" onclick="finalCelebrate()">Yes Absolute ! 🎉</button>
+        </div>
+    </div>
+
+    <script>
+        // --- SCREEN MANAGEMENT ---
+        function nextScreen(screenNum) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(`screen${screenNum}`).classList.add('active');
+            startHeartShower();
+            
+            if(screenNum === 3) {
+                typeGameText(
+                    document.getElementById('game-title'),
+                    'Catch the Butterflies 🦋',
+                    () => typeGameText(
+                        document.getElementById('game-instruction'),
+                        'Catch them all... each one has something to tell you ✨'
+                    )
+                );
+                startGame();
+            }
+        }
+
+        function typeGameText(element, text, onComplete) {
+            const characters = Array.from(text);
+            let index = 0;
+
+            element.textContent = '';
+            element.classList.add('typing-cursor');
+            const typingInterval = setInterval(() => {
+                element.textContent += characters[index];
+                index++;
+                if (index >= characters.length) {
+                    clearInterval(typingInterval);
+                    element.classList.remove('typing-cursor');
+                    if (onComplete) onComplete();
+                }
+            }, 55);
+        }
+
+        // --- STAGE 1: FAKE COUNTDOWN TIMER ---
+        let currentSecond = 55;
+        const timerElement = document.getElementById('timer');
+        
+        const countdownInterval = setInterval(() => {
+            currentSecond++;
+            if (currentSecond < 60) {
+                timerElement.innerText = `11:59:${currentSecond < 10 ? '0' : ''}${currentSecond}`;
+            } else {
+                timerElement.innerText = `12:00:00`;
+                clearInterval(countdownInterval);
+                setTimeout(() => {
+                    nextScreen(2);
+                }, 1000); // 12 மணிக்கு வந்ததும் அடுத்த ஸ்கிரீன் மாறும்
+            }
+        }, 1000);
+
+
+        // --- STAGE 2: EVADING "NO" BUTTON ---
+        const noBtn = document.getElementById('noBtn');
+        const container = document.querySelector('.btn-container');
+
+        noBtn.addEventListener('mouseover', () => {
+            // Container-க்குள் பட்டன் எங்கு வேண்டுமானாலும் ஓடிப் போகும் படி செய்தல்
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+            
+            const randomX = Math.random() * (containerWidth - noBtn.clientWidth - 20) + 10;
+            const randomY = Math.random() * (containerHeight - noBtn.clientHeight - 10);
+            
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        });
+
+
+        // --- STAGE 3: BUTTERFLY CATCHING GAME ---
+        let caughtCount = 0;
+        const totalButterflies = 5;
+        const loveNotes = [
+            "Nee siricha alaga iruppa Thangam ❤️",
+            "Una evalavu luv pandrenu words la solla mudiyala...✨",
+            "Na sanda podurathu poss aagurathu ithellam un mela irukka luv mattum tha 🥺",
+            "Evlo sanda pottalum unna vittu iponu illa epayum ennala irukka mudiyathu 🤎",
+            "Una ipa nu ila eppayum sirikka vachu na paththukkuren di thanga pulla 😊"
+        ];
+
+        function startGame() {
+            const gameContainer = document.getElementById('game-container');
+            for (let i = 0; i < totalButterflies; i++) {
+                const butterfly = document.createElement('div');
+                butterfly.className = 'butterfly-emoji';
+                butterfly.innerText = '🦋';
+                butterfly.style.left = `${Math.random() * 80 + 10}%`;
+                butterfly.style.top = `${Math.random() * 70 + 10}%`;
+                
+                // பட்டாம்பூச்சிகள் அங்குமிங்கும் நகர அனிமேஷன்
+                moveButterfly(butterfly);
+                
+                butterfly.addEventListener('click', () => {
+                    if (!butterfly.classList.contains('caught')) {
+                        butterfly.classList.add('caught');
+                        document.getElementById('gameMessage').innerText = loveNotes[caughtCount];
+                        caughtCount++;
+                        document.getElementById('countLabel').innerText = `${caughtCount}/${totalButterflies}`;
+                        butterfly.remove();
+                        
+                        if (caughtCount === totalButterflies) {
+                            setTimeout(() => {
+                                nextScreen(4);
+                            }, 3000); // அனைத்து குறிப்புகளையும் படித்த பின் அடுத்த ஸ்கிரீன் போகும்
+                        }
+                    }
+                });
+                gameContainer.appendChild(butterfly);
+            }
+        }
+
+        function moveButterfly(el) {
+            if(!el.parentNode) return;
+            const randomX = Math.random() * 85;
+            const randomY = Math.random() * 80;
+            el.style.left = `${randomX}%`;
+            el.style.top = `${randomY}%`;
+            setTimeout(() => moveButterfly(el), 1200);
+        }
+
+
+        // --- STAGE 4 & 5: GIFT OPEN & HEART SHOWER ---
+        function openGift() {
+            nextScreen(5);
+        }
+
+        function finalCelebrate() {
+            alert("Yay! Best Night Ever! See you at 8 PM ❤️✨");
+            startHeartShower();
+        }
+
+        function startHeartShower() {
+            document.querySelectorAll('.heart-rain').forEach(heart => heart.remove());
+            const hearts = ['❤️', '🤎'];
+            for (let i = 0; i < 150; i++) {
+                const heart = document.createElement('span');
+                const delay = Math.random() * 1.2;
+                heart.className = 'heart-rain';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.fontSize = `${16 + Math.random() * 10}px`;
+                heart.style.animationDuration = `${3 + Math.random() * 2}s`;
+                heart.style.animationDelay = `${delay}s`;
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 6000);
+            }
+        }
+
+        startHeartShower();
+    </script>
+</body>
+</html>
